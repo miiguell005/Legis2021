@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LegisModelStoreContainer" CdmEntityContainer="LegisEntities">
+    <EntitySetMapping Name="Candidato">
+      <EntityTypeMapping TypeName="LegisModel.Candidato">
+        <MappingFragment StoreEntitySet="Candidato">
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Propuesta" ColumnName="Propuesta" />
+          <ScalarProperty Name="Foto" ColumnName="Foto" />
+          <ScalarProperty Name="NumeroIdentificacion" ColumnName="NumeroIdentificacion" />
+          <ScalarProperty Name="TipoIdentificacion" ColumnName="TipoIdentificacion" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdCandidato" ColumnName="IdCandidato" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CandidatoEleccion">
+      <EntityTypeMapping TypeName="LegisModel.CandidatoEleccion">
+        <MappingFragment StoreEntitySet="CandidatoEleccion">
+          <ScalarProperty Name="Anio" ColumnName="Anio" />
+          <ScalarProperty Name="IdEleccion" ColumnName="IdEleccion" />
+          <ScalarProperty Name="IdCandidato" ColumnName="IdCandidato" />
+          <ScalarProperty Name="IdCandidatoEleccion" ColumnName="IdCandidatoEleccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Eleccion">
+      <EntityTypeMapping TypeName="LegisModel.Eleccion">
+        <MappingFragment StoreEntitySet="Eleccion">
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="IdEleccion" ColumnName="IdEleccion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Voto">
+      <EntityTypeMapping TypeName="LegisModel.Voto">
+        <MappingFragment StoreEntitySet="Voto">
+          <ScalarProperty Name="IdSufragante" ColumnName="IdSufragante" />
+          <ScalarProperty Name="IdEleccion" ColumnName="IdEleccion" />
+          <ScalarProperty Name="IdVoto" ColumnName="IdVoto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sufragante">
+      <EntityTypeMapping TypeName="LegisModel.Sufragante">
+        <MappingFragment StoreEntitySet="Sufragante">
+          <ScalarProperty Name="Votado" ColumnName="Votado" />
+          <ScalarProperty Name="NumeroIdentificacion" ColumnName="NumeroIdentificacion" />
+          <ScalarProperty Name="TipoIdentifiacion" ColumnName="TipoIdentifiacion" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+          <ScalarProperty Name="Sexo" ColumnName="Sexo" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdSufragante" ColumnName="IdSufragante" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

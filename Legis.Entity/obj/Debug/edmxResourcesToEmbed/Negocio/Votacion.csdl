@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LegisModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="LegisEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Candidato" EntityType="LegisModel.Candidato" />
+    <EntitySet Name="CandidatoEleccion" EntityType="LegisModel.CandidatoEleccion" />
+    <EntitySet Name="Eleccion" EntityType="LegisModel.Eleccion" />
+    <EntitySet Name="Voto" EntityType="LegisModel.Voto" />
+    <AssociationSet Name="FK_CandidatoEleccion_Candidato" Association="LegisModel.FK_CandidatoEleccion_Candidato">
+      <End Role="Candidato" EntitySet="Candidato" />
+      <End Role="CandidatoEleccion" EntitySet="CandidatoEleccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CandidatoEleccion_Eleccion" Association="LegisModel.FK_CandidatoEleccion_Eleccion">
+      <End Role="Eleccion" EntitySet="Eleccion" />
+      <End Role="CandidatoEleccion" EntitySet="CandidatoEleccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Voto_Eleccion" Association="LegisModel.FK_Voto_Eleccion">
+      <End Role="Eleccion" EntitySet="Eleccion" />
+      <End Role="Voto" EntitySet="Voto" />
+    </AssociationSet>
+    <EntitySet Name="Sufragante" EntityType="LegisModel.Sufragante" />
+    <AssociationSet Name="FK_Voto_Sufragante" Association="LegisModel.FK_Voto_Sufragante">
+      <End Role="Sufragante" EntitySet="Sufragante" />
+      <End Role="Voto" EntitySet="Voto" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Candidato">
+    <Key>
+      <PropertyRef Name="IdCandidato" />
+    </Key>
+    <Property Name="IdCandidato" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TipoIdentificacion" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroIdentificacion" Type="String" Nullable="false" MaxLength="15" FixedLength="true" Unicode="true" />
+    <Property Name="Foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Propuesta" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CandidatoEleccion" Relationship="LegisModel.FK_CandidatoEleccion_Candidato" FromRole="Candidato" ToRole="CandidatoEleccion" />
+  </EntityType>
+  <EntityType Name="CandidatoEleccion">
+    <Key>
+      <PropertyRef Name="IdCandidatoEleccion" />
+    </Key>
+    <Property Name="IdCandidatoEleccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCandidato" Type="Int32" Nullable="false" />
+    <Property Name="IdEleccion" Type="Int32" Nullable="false" />
+    <Property Name="Anio" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Candidato" Relationship="LegisModel.FK_CandidatoEleccion_Candidato" FromRole="CandidatoEleccion" ToRole="Candidato" />
+    <NavigationProperty Name="Eleccion" Relationship="LegisModel.FK_CandidatoEleccion_Eleccion" FromRole="CandidatoEleccion" ToRole="Eleccion" />
+  </EntityType>
+  <EntityType Name="Eleccion">
+    <Key>
+      <PropertyRef Name="IdEleccion" />
+    </Key>
+    <Property Name="IdEleccion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Titulo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CandidatoEleccion" Relationship="LegisModel.FK_CandidatoEleccion_Eleccion" FromRole="Eleccion" ToRole="CandidatoEleccion" />
+    <NavigationProperty Name="Voto" Relationship="LegisModel.FK_Voto_Eleccion" FromRole="Eleccion" ToRole="Voto" />
+  </EntityType>
+  <EntityType Name="Voto">
+    <Key>
+      <PropertyRef Name="IdVoto" />
+    </Key>
+    <Property Name="IdVoto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdEleccion" Type="Int32" Nullable="false" />
+    <Property Name="IdSufragante" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Eleccion" Relationship="LegisModel.FK_Voto_Eleccion" FromRole="Voto" ToRole="Eleccion" />
+    <NavigationProperty Name="Sufragante" Relationship="LegisModel.FK_Voto_Sufragante" FromRole="Voto" ToRole="Sufragante" />
+  </EntityType>
+  <Association Name="FK_CandidatoEleccion_Candidato">
+    <End Type="LegisModel.Candidato" Role="Candidato" Multiplicity="1" />
+    <End Type="LegisModel.CandidatoEleccion" Role="CandidatoEleccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Candidato">
+        <PropertyRef Name="IdCandidato" />
+      </Principal>
+      <Dependent Role="CandidatoEleccion">
+        <PropertyRef Name="IdCandidato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CandidatoEleccion_Eleccion">
+    <End Type="LegisModel.Eleccion" Role="Eleccion" Multiplicity="1" />
+    <End Type="LegisModel.CandidatoEleccion" Role="CandidatoEleccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eleccion">
+        <PropertyRef Name="IdEleccion" />
+      </Principal>
+      <Dependent Role="CandidatoEleccion">
+        <PropertyRef Name="IdEleccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Voto_Eleccion">
+    <End Type="LegisModel.Eleccion" Role="Eleccion" Multiplicity="1" />
+    <End Type="LegisModel.Voto" Role="Voto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eleccion">
+        <PropertyRef Name="IdEleccion" />
+      </Principal>
+      <Dependent Role="Voto">
+        <PropertyRef Name="IdEleccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Sufragante">
+    <Key>
+      <PropertyRef Name="IdSufragante" />
+    </Key>
+    <Property Name="IdSufragante" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="Sexo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="7" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="TipoIdentifiacion" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroIdentificacion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Votado" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Voto" Relationship="LegisModel.FK_Voto_Sufragante" FromRole="Sufragante" ToRole="Voto" />
+  </EntityType>
+  <Association Name="FK_Voto_Sufragante">
+    <End Type="LegisModel.Sufragante" Role="Sufragante" Multiplicity="1" />
+    <End Type="LegisModel.Voto" Role="Voto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sufragante">
+        <PropertyRef Name="IdSufragante" />
+      </Principal>
+      <Dependent Role="Voto">
+        <PropertyRef Name="IdSufragante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,40 @@
+﻿
+<div ng-if="voto.titulo== 'Crear Sufragante'">
+
+    <div class="col-md-12">
+        <div class="col-md-6">
+            <label>Nombre *</label>
+            <input class="form-control" type="text" ng-model="voto.sufragante.Nombre" required />
+        </div>
+        <div class="col-md-6">
+            <label>Apellido *</label>
+            <input class="form-control" type="text" ng-model="voto.sufragante.Apellido" required />
+        </div>
+        <div class="col-md-6">
+            <label>Sexo *</label>
+            <select class="form-control" ng-model="voto.sufragante.Sexo" ng-options="t.tipo as t.nombre for t in voto.sexo"></select>
+        </div>
+        <div class="col-md-6">
+            <label>Fecha Nacimiento *</label>
+            <input class="form-control" type="text" ng-model="voto.sufragante.FechaNacimiento" required />
+        </div>
+        <div class="col-md-6">
+            <label>Email *</label>
+            <input class="form-control" type="email" ng-model="voto.sufragante.Email" required />
+        </div>
+        <div class="col-md-6">
+            <label>Tipo de identificación *</label>
+            <select class="form-control" ng-model="voto.sufragante.TipoIdentificacion" ng-options="t.tipo as t.nombre for t in voto.tipoIdentificacion"></select>
+        </div>
+        <div class="col-md-6">
+            <label>Número Identificación *</label>
+            <input class="form-control" type="text" ng-model="voto.sufragante.NumeroIdentificacion" required />
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="text-center">
+            <br />
+            <button class="btn btn-primary" ng-click="voto.guardarSufragante()">Guardar</button>
+        </div>
+    </div>
+</div>

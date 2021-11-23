@@ -1,0 +1,11 @@
+D:\Proyectos\legis\Legis\Legis.Entity\bin\Debug\Legis.Entity.dll.config
+D:\Proyectos\legis\Legis\Legis.Entity\bin\Debug\Legis.Entity.dll
+D:\Proyectos\legis\Legis\Legis.Entity\bin\Debug\Legis.Entity.pdb
+D:\Proyectos\legis\Legis\Legis.Entity\bin\Debug\EntityFramework.dll
+D:\Proyectos\legis\Legis\Legis.Entity\bin\Debug\EntityFramework.SqlServer.dll
+D:\Proyectos\legis\Legis\Legis.Entity\bin\Debug\EntityFramework.xml
+D:\Proyectos\legis\Legis\Legis.Entity\bin\Debug\EntityFramework.SqlServer.xml
+D:\Proyectos\legis\Legis\Legis.Entity\obj\Debug\Legis.Entity.csproj.CoreCompileInputs.cache
+D:\Proyectos\legis\Legis\Legis.Entity\obj\Debug\Legis.Entity.dll
+D:\Proyectos\legis\Legis\Legis.Entity\obj\Debug\Legis.Entity.pdb
+D:\Proyectos\legis\Legis\Legis.Entity\obj\Debug\Legis.Entity.csproj.AssemblyReference.cache

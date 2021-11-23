@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LegisModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Candidato">
+    <Key>
+      <PropertyRef Name="IdCandidato" />
+    </Key>
+    <Property Name="IdCandidato" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Apellido" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="TipoIdentificacion" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="NumeroIdentificacion" Type="nchar" MaxLength="15" Nullable="false" />
+    <Property Name="Foto" Type="varchar(max)" />
+    <Property Name="Propuesta" Type="varchar(max)" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CandidatoEleccion">
+    <Key>
+      <PropertyRef Name="IdCandidatoEleccion" />
+    </Key>
+    <Property Name="IdCandidatoEleccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCandidato" Type="int" Nullable="false" />
+    <Property Name="IdEleccion" Type="int" Nullable="false" />
+    <Property Name="Anio" Type="varchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Eleccion">
+    <Key>
+      <PropertyRef Name="IdEleccion" />
+    </Key>
+    <Property Name="IdEleccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Titulo" Type="varchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Sufragante">
+    <Key>
+      <PropertyRef Name="IdSufragante" />
+    </Key>
+    <Property Name="IdSufragante" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Apellido" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="Sexo" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FechaNacimiento" Type="datetime2" Precision="7" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="TipoIdentifiacion" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="NumeroIdentificacion" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Votado" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Voto">
+    <Key>
+      <PropertyRef Name="IdVoto" />
+    </Key>
+    <Property Name="IdVoto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdEleccion" Type="int" Nullable="false" />
+    <Property Name="IdSufragante" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CandidatoEleccion_Candidato">
+    <End Role="Candidato" Type="Self.Candidato" Multiplicity="1" />
+    <End Role="CandidatoEleccion" Type="Self.CandidatoEleccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Candidato">
+        <PropertyRef Name="IdCandidato" />
+      </Principal>
+      <Dependent Role="CandidatoEleccion">
+        <PropertyRef Name="IdCandidato" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CandidatoEleccion_Eleccion">
+    <End Role="Eleccion" Type="Self.Eleccion" Multiplicity="1" />
+    <End Role="CandidatoEleccion" Type="Self.CandidatoEleccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eleccion">
+        <PropertyRef Name="IdEleccion" />
+      </Principal>
+      <Dependent Role="CandidatoEleccion">
+        <PropertyRef Name="IdEleccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Voto_Eleccion">
+    <End Role="Eleccion" Type="Self.Eleccion" Multiplicity="1" />
+    <End Role="Voto" Type="Self.Voto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Eleccion">
+        <PropertyRef Name="IdEleccion" />
+      </Principal>
+      <Dependent Role="Voto">
+        <PropertyRef Name="IdEleccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Voto_Sufragante">
+    <End Role="Sufragante" Type="Self.Sufragante" Multiplicity="1" />
+    <End Role="Voto" Type="Self.Voto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Sufragante">
+        <PropertyRef Name="IdSufragante" />
+      </Principal>
+      <Dependent Role="Voto">
+        <PropertyRef Name="IdSufragante" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LegisModelStoreContainer">
+    <EntitySet Name="Candidato" EntityType="Self.Candidato" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CandidatoEleccion" EntityType="Self.CandidatoEleccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Eleccion" EntityType="Self.Eleccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sufragante" EntityType="Self.Sufragante" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Voto" EntityType="Self.Voto" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CandidatoEleccion_Candidato" Association="Self.FK_CandidatoEleccion_Candidato">
+      <End Role="Candidato" EntitySet="Candidato" />
+      <End Role="CandidatoEleccion" EntitySet="CandidatoEleccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CandidatoEleccion_Eleccion" Association="Self.FK_CandidatoEleccion_Eleccion">
+      <End Role="Eleccion" EntitySet="Eleccion" />
+      <End Role="CandidatoEleccion" EntitySet="CandidatoEleccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Voto_Eleccion" Association="Self.FK_Voto_Eleccion">
+      <End Role="Eleccion" EntitySet="Eleccion" />
+      <End Role="Voto" EntitySet="Voto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Voto_Sufragante" Association="Self.FK_Voto_Sufragante">
+      <End Role="Sufragante" EntitySet="Sufragante" />
+      <End Role="Voto" EntitySet="Voto" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,15 @@
+D:\Proyectos\legis\Legis\Legis.LogicLayer\bin\Debug\Legis.LogicLayer.dll.config
+D:\Proyectos\legis\Legis\Legis.LogicLayer\bin\Debug\Legis.LogicLayer.dll
+D:\Proyectos\legis\Legis\Legis.LogicLayer\bin\Debug\Legis.LogicLayer.pdb
+D:\Proyectos\legis\Legis\Legis.LogicLayer\bin\Debug\EntityFramework.dll
+D:\Proyectos\legis\Legis\Legis.LogicLayer\bin\Debug\EntityFramework.SqlServer.dll
+D:\Proyectos\legis\Legis\Legis.LogicLayer\bin\Debug\Legis.Entity.dll
+D:\Proyectos\legis\Legis\Legis.LogicLayer\bin\Debug\Legis.Entity.pdb
+D:\Proyectos\legis\Legis\Legis.LogicLayer\bin\Debug\Legis.Entity.dll.config
+D:\Proyectos\legis\Legis\Legis.LogicLayer\bin\Debug\EntityFramework.xml
+D:\Proyectos\legis\Legis\Legis.LogicLayer\bin\Debug\EntityFramework.SqlServer.xml
+D:\Proyectos\legis\Legis\Legis.LogicLayer\obj\Debug\Legis.LogicLayer.csproj.AssemblyReference.cache
+D:\Proyectos\legis\Legis\Legis.LogicLayer\obj\Debug\Legis.LogicLayer.csproj.CoreCompileInputs.cache
+D:\Proyectos\legis\Legis\Legis.LogicLayer\obj\Debug\Legis.LogicLayer.csproj.CopyComplete
+D:\Proyectos\legis\Legis\Legis.LogicLayer\obj\Debug\Legis.LogicLayer.dll
+D:\Proyectos\legis\Legis\Legis.LogicLayer\obj\Debug\Legis.LogicLayer.pdb

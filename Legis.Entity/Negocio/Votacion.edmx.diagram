@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b746990439b746a8bb6b135d66a9a4fb" Name="Diagram1">
+        <EntityTypeShape EntityType="LegisModel.Candidato" Width="1.5" PointX="0.75" PointY="11.125" />
+        <EntityTypeShape EntityType="LegisModel.CandidatoEleccion" Width="1.5" PointX="3" PointY="3.625" />
+        <EntityTypeShape EntityType="LegisModel.Eleccion" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="LegisModel.Voto" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="LegisModel.FK_CandidatoEleccion_Candidato" />
+        <AssociationConnector Association="LegisModel.FK_CandidatoEleccion_Eleccion" />
+        <AssociationConnector Association="LegisModel.FK_Voto_Eleccion" />
+        <EntityTypeShape EntityType="LegisModel.Sufragante" Width="1.5" PointX="5.375" PointY="1" />
+        <AssociationConnector Association="LegisModel.FK_Voto_Sufragante" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
